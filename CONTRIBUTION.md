@@ -1,6 +1,6 @@
 # Library Management System - Contribution Guidelines
 
-Welcome to the Library Management System project! We appreciate your interest in contributing to our project. This document outlines the guidelines and steps to follow when making contributions. Please take a moment to read this guide and familiarize yourself with the contribution process.
+Welcome to the Library Management System project! This document outlines the guidelines and steps to follow when making contributions. Please take a moment to read this guide and familiarize yourself with the contribution process.
 
 ## Getting Started
 
