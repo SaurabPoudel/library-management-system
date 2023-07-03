@@ -3,5 +3,6 @@
 
 void printBanner();
 void menuBar();
+void prompt();
 
 #endif
