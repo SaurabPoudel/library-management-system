@@ -19,11 +19,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -Iinclude -c $< -o $@
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@if not exist "$(OBJ_DIR)" mkdir "$(OBJ_DIR)"
 
 $(BIN_DIR):
-	mkdir -p $(BIN_DIR)
+	@if not exist "$(BIN_DIR)" mkdir "$(BIN_DIR)"
 
 clean:
-	del /Q $(OBJ_DIR)\*.o
-	del /Q $(EXECUTABLE)
+	rmdir /s /q $(OBJ_DIR)
+	rmdir /s /q $(BIN_DIR)
