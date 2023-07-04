@@ -10,7 +10,9 @@
 
 void addMember()
 {
-    system("cls");
+    /* CLS is for windows try uncommenting this for linux*/
+    system("cls"); // uncomment this for linux
+    // system("clear");
     printf(ANSI_COLOR_GREEN "Library Management System" ANSI_COLOR_RESET);
     printf(ANSI_COLOR_GREEN "Library Management System" ANSI_COLOR_RESET);
     printf(ANSI_COLOR_GREEN "\n----------------------------------------------------" ANSI_COLOR_RESET);

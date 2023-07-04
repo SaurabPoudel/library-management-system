@@ -24,6 +24,12 @@ $(OBJ_DIR):
 $(BIN_DIR):
 	@if not exist "$(BIN_DIR)" mkdir "$(BIN_DIR)"
 
+#for windows user only
 clean:
 	rmdir /s /q $(OBJ_DIR)
 	rmdir /s /q $(BIN_DIR)
+
+#for linux user uncomment this
+#clean:
+#	rm -rf $(OBJ_DIR)
+#	rm -rf $(BIN_DIR)
