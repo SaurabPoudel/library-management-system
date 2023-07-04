@@ -73,3 +73,21 @@ Windows User
 ```
 library.exe
 ```
+
+### Clean the Project
+
+1. Open a terminal or command prompt.
+2. Change the current working directory to the location where you have cloned the project.
+3. Run the following command to clean the project:
+
+Linux User
+
+```
+make clean
+```
+
+Windows User
+
+```
+mingw32-make clean
+```
