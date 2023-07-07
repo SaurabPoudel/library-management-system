@@ -33,7 +33,7 @@ clean:
 	rmdir /s /q $(OBJ_DIR)
 	rmdir /s /q $(BIN_DIR)
 cleandatafolder:
-	rmdir /s /q $(DATA_DIR)
+	rmdir /s $(DATA_DIR)
 #for linux user uncomment this
 #clean:
 #	rm -rf $(OBJ_DIR)
