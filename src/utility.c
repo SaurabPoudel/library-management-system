@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "authentication.h"
+#include "addBook.h"
 
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -57,6 +58,7 @@ void prompt()
     {
         printf("\n");
         printf(ANSI_COLOR_GREEN "> " ANSI_COLOR_RESET);
+  
         scanf("%d", &input);
         printf("\n");
 
@@ -66,7 +68,12 @@ void prompt()
             printf(ANSI_COLOR_RED "LMS has been terminated. \n" ANSI_COLOR_RESET);
             break;
         }
-        if (input == 2)
+        if (input == 1)
+        {
+            addBook();
+            break;
+        }
+        if (input == 2) 
         {
             addMember();
             break;
