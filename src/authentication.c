@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -41,12 +42,13 @@ void addMemberMenu()
     scanf("%s", confirmPassword);
     printf("\n");
 
-    if(strcmp(username, "99") || strcmp(password, "99") || strcmp(confirmPassword, "99") ){
-        system("cls");
-        printBanner();
-        menuBar();
-        prompt();
-    }
+    // if (strcmp(username, "99") || strcmp(password, "99") || strcmp(confirmPassword, "99"))
+    // {
+    //     system("cls");
+    //     printBanner();
+    //     menuBar();
+    //     prompt();
+    // }
 
     rot13algorithm(password);
     rot13algorithm(confirmPassword);
@@ -57,19 +59,42 @@ void addMemberMenu()
     }
     else
     {
-        printf(ANSI_COLOR_GREEN "Account created successfully!\n" ANSI_COLOR_RESET);
-        FILE *file = fopen("./data/members.csv", "a");
-        if (file == NULL)
+        // printf(ANSI_COLOR_GREEN "Account created successfully!\n" ANSI_COLOR_RESET);
+        FILE *file = NULL;
+        FILE *file2 = NULL;
+        if (access("./data/members.csv", F_OK) != -1)
         {
-            printf(ANSI_COLOR_RED "Failed to open members file!\n" ANSI_COLOR_RESET);
-            return;
+            file = fopen("./data/members.csv", "a");
+            fprintf(file, "\n%s,%s", username, password);
+            fclose(file);
+            printf(ANSI_COLOR_GREEN "Member added to members.csv file.\n" ANSI_COLOR_RESET);
         }
-
-        fprintf(file, "%s,%s\n", username, password);
-        fclose(file);
-        printf(ANSI_COLOR_GREEN "Member added to members.csv file.\n" ANSI_COLOR_RESET);
+        else
+        {
+            file2 = fopen("./data/members.csv", "w");
+            fprintf(file2, "%s,%s", username, password);
+            fclose(file2);
+            printf(ANSI_COLOR_GREEN "Member added to members.csv file.\n" ANSI_COLOR_RESET);
+        }
     }
+    printf(ANSI_COLOR_GREEN "\nEnter [Y] to add new member again OR [N] to go to Main Menu \n>" ANSI_COLOR_RESET);
 
+    char inputMember;
+    getchar();
+    scanf("%c", &inputMember);
+
+    if (inputMember == 'Y' || inputMember == 'y')
+    {
+
+        addMemberMenu();
+    }
+    else
+    {
+        system("cls");
+        printBanner();
+        menuBar();
+        prompt();
+    }
     printf("\n");
 }
 

@@ -9,28 +9,31 @@
 #define ANSI_COLOR_BLUE "\x1b[34m"
 #define MAX_LINE_LENGTH 1000
 
-struct Book{
+struct Book
+{
     unsigned int id;
     char title[100];
     char author[100];
     unsigned int year;
-    bool isBorrow; 
+    bool isBorrow;
 };
 
 void addBook();
-/* 
-* ADD BOOK
-* Adds new books to the records
-* Adds the IDs according to the sequence
-* Asks for the book name (records it)
-* Asks for the book author (records it)
-* When new book is added isBorrow will be set to False
-* books.csv's SYNTAX [ID, TITLE, AUTHOR, isBorrow]
-*/
+/*
+ * ADD BOOK
+ * Adds new books to the records
+ * Adds the IDs according to the sequence
+ * Asks for the book name (records it)
+ * Asks for the book author (records it)
+ * When new book is added isBorrow will be set to False
+ * books.csv's SYNTAX [ID, TITLE, AUTHOR, isBorrow]
+ */
 
-unsigned int getBookID(const char* filename) {
-    FILE* file = fopen(filename, "r");
-    if (file == NULL) {
+unsigned int getBookID(const char *filename)
+{
+    FILE *file = fopen(filename, "r");
+    if (file == NULL)
+    {
         printf("Error opening file.\n");
         return 0;
     }
@@ -38,8 +41,10 @@ unsigned int getBookID(const char* filename) {
     unsigned int lineCount = 0;
     char ch;
 
-    while ((ch = fgetc(file)) != EOF) {
-        if (ch == '\n') {
+    while ((ch = fgetc(file)) != EOF)
+    {
+        if (ch == '\n')
+        {
             lineCount++;
         }
     }
@@ -54,22 +59,21 @@ void addBookBanner()
     printf("\n------------------Add Book (Exit: 99)------------------\n" ANSI_COLOR_RESET);
 }
 
-
-void addBookMenu() {
+void addBookMenu()
+{
     struct Book book;
     printf("\n");
-    getchar(); 
+    getchar();
     printf(ANSI_COLOR_GREEN "Enter the book TITLE: \n>");
     scanf("%[^\n]", book.title);
-    getchar();  
+    getchar();
 
-    printf( "Enter the book AUTHOR: \n>");
+    printf("Enter the book AUTHOR: \n>");
     scanf("%[^\n]", book.author);
-    getchar();  
+    getchar();
 
     printf("Enter the book YEAR: (Integer value only)\n>");
     scanf("%u", &book.year);
- 
 
     unsigned int lastId = getBookID("./data/books.csv");
     book.id = lastId + 1;
@@ -77,7 +81,8 @@ void addBookMenu() {
 
     // Write or append data to the file here
     FILE *file = fopen("./data/books.csv", "a");
-    if (file == NULL) {
+    if (file == NULL)
+    {
         printf("Error opening file.\n");
         return;
     }
@@ -85,7 +90,7 @@ void addBookMenu() {
     fprintf(file, "%u,%s,%s,%u,%d\n", book.id, book.title, book.author, book.year, book.isBorrow);
     fclose(file);
 
-    printf("Book added with ID: %u\n", book.id );
+    printf("Book added with ID: %u\n", book.id);
 
     printf("\nEnter [Y] to Continue OR [N] to go to Main Menu \n>");
 
@@ -93,28 +98,26 @@ void addBookMenu() {
     getchar();
     scanf("%c", &inputBook);
 
-    if(inputBook == 'Y' || inputBook == 'y'){
-     
+    if (inputBook == 'Y' || inputBook == 'y')
+    {
+
         addBook();
     }
-    else{
-            system("cls"); 
-            printBanner();
-            menuBar();
-            prompt();
+    else
+    {
+        system("cls");
+        printBanner();
+        menuBar();
+        prompt();
     }
 
     printf(ANSI_COLOR_RESET);
-    
-
-
-
 }
 
-
-void addBook(){
-        system("cls"); // Uncomment this for Linux: system("clear");
-        addBookBanner();
-        addBookMenu();
-        printf(ANSI_COLOR_RESET);
+void addBook()
+{
+    system("cls"); // Uncomment this for Linux: system("clear");
+    addBookBanner();
+    addBookMenu();
+    printf(ANSI_COLOR_RESET);
 }
