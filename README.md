@@ -91,3 +91,13 @@ Windows User
 ```
 mingw32-make clean
 ```
+
+## About the Project
+
+### Features
+
+- Add User
+- Add books
+- Display book details
+- Search for books
+- Manage borrowing and returning of books
