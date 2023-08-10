@@ -23,24 +23,30 @@ void searchBooks()
     int flag = 0;
     struct Book book;
     unsigned int borrowInt;
+
     FILE *fp = NULL;
     fp = fopen("./data/books.csv", "r");
+
     if (fp == NULL)
     {
         printf(ANSI_COLOR_RED "Error opening file.\n" ANSI_COLOR_RESET);
     }
-    printf(ANSI_COLOR_GREEN "Enter the book TITLE: \n>");
+
+    printf(ANSI_COLOR_RED "Make sure to type [-] wherever there are spaces.\n>" ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_GREEN "Enter the book TITLE: \n>" ANSI_COLOR_RESET);
     scanf("%s", key);
     getchar();
+
     while (fscanf(fp, "%d,%[^,],%[^,],%u,%u\n", &book.id, book.title, book.author, &book.year, &borrowInt) != EOF)
     {
-        book.isBorrow = borrowInt ? true : false;
+
         if (strcmp(key, book.title) == 0)
         {
             flag = 1;
             break;
         }
     }
+
     if (flag == 1)
     {
         printf("%d\t%s\t\t\t%s\t\t\t%d\t\t%s\n", book.id, book.title, book.author, book.year, book.isBorrow ? "Borrowed" : "Not Borrowed");

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -56,7 +57,20 @@ unsigned int getBookID(const char *filename)
 void addBookBanner()
 {
     printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
-    printf("\n------------------Add Book (Exit: 99)------------------\n" ANSI_COLOR_RESET);
+    printf("\n------------------Add Book-------------------\n" ANSI_COLOR_RESET);
+}
+
+void voidReplacer(char title[])
+{
+    int i;
+
+    for (i = 0; i < strlen(title); i++)
+    {
+        if (title[i] == ' ')
+        {
+            title[i] = '-';
+        }
+    }
 }
 
 void addBookMenu()
@@ -71,6 +85,9 @@ void addBookMenu()
     printf("Enter the book AUTHOR: \n>");
     scanf("%[^\n]", book.author);
     getchar();
+
+    voidReplacer(book.title);
+    voidReplacer(book.author);
 
     printf("Enter the book YEAR: (Integer value only)\n>");
     scanf("%u", &book.year);
