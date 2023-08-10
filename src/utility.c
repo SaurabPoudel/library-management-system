@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "authentication.h"
 #include "addBook.h"
+#include "displayBooks.h"
 
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -58,7 +59,7 @@ void prompt()
     {
         printf("\n");
         printf(ANSI_COLOR_GREEN "> " ANSI_COLOR_RESET);
-  
+
         scanf("%d", &input);
         printf("\n");
 
@@ -73,9 +74,14 @@ void prompt()
             addBook();
             break;
         }
-        if (input == 2) 
+        if (input == 2)
         {
             addMember();
+            break;
+        }
+        if (input == 7)
+        {
+            displayBooks();
             break;
         }
     }
