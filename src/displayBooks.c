@@ -20,7 +20,7 @@ void displayBooks()
     FILE *file = fopen("./data/books.csv", "r");
     if (file == NULL)
     {
-        printf("Error opening file.\n");
+        printf(ANSI_COLOR_RED "Error opening file.\n" ANSI_COLOR_RESET);
         return;
     }
 
@@ -30,10 +30,9 @@ void displayBooks()
     printf("\n------------------Display Books------------------\n" ANSI_COLOR_RESET);
     printf("\nID\tTitle\t\t\tAuthor\t\t\tYear\t\tBorrowed\n");
     unsigned int borrowInt;
-    while (fscanf(file, "%d,%[^,],%[^,],%d,%u\n", &book.id, book.title, book.author, &book.year, &borrowInt) != EOF)
+    while (fscanf(file, "%d,%[^,],%[^,],%u,%u\n", &book.id, book.title, book.author, &book.year, &borrowInt) != EOF)
     {
         book.isBorrow = borrowInt ? true : false;
-        // print the books with the best format where all are algined
         printf("%d\t%s\t\t\t%s\t\t\t%d\t\t%s\n", book.id, book.title, book.author, book.year, book.isBorrow ? "Yes" : "No");
     }
     printf("\n");
