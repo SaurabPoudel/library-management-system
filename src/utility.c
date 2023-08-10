@@ -2,6 +2,7 @@
 #include "authentication.h"
 #include "addBook.h"
 #include "displayBooks.h"
+#include "searchBooks.h"
 
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -77,6 +78,11 @@ void prompt()
         if (input == 2)
         {
             addMember();
+            break;
+        }
+        if (input == 5)
+        {
+            searchBooks();
             break;
         }
         if (input == 7)
