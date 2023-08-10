@@ -6,6 +6,7 @@
 #include "searchBooks.h"
 #include "searchMember.h"
 #include "displayMembers.h"
+#include "issueBook.h"
 
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -83,6 +84,7 @@ void prompt()
             break;
 
         case 3:
+            issueBook();
             break;
 
         case 4:
