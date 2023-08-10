@@ -3,6 +3,8 @@
 #include "addBook.h"
 #include "displayBooks.h"
 #include "searchBooks.h"
+#include "searchMember.h"
+#include "displayMembers.h"
 
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -85,9 +87,19 @@ void prompt()
             searchBooks();
             break;
         }
+        if (input == 6)
+        {
+            searchMember();
+            break;
+        }
         if (input == 7)
         {
             displayBooks();
+            break;
+        }
+        if (input == 8)
+        {
+            displayMembers();
             break;
         }
     }
