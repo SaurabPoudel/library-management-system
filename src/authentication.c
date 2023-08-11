@@ -25,7 +25,7 @@ void addMember()
 void addMemberBanner()
 {
     printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
-    printf("\n------------------Add Member (Exit: 99)------------------\n" ANSI_COLOR_RESET);
+    printf("\n------------------Add Member---------------------\n" ANSI_COLOR_RESET);
 }
 
 void addMemberMenu()
@@ -41,14 +41,6 @@ void addMemberMenu()
     printf("\nConfirm your password:\n> ");
     scanf("%s", confirmPassword);
     printf("\n");
-
-    // if (strcmp(username, "99") || strcmp(password, "99") || strcmp(confirmPassword, "99"))
-    // {
-    //     system("cls");
-    //     printBanner();
-    //     menuBar();
-    //     prompt();
-    // }
 
     rot13algorithm(password);
     rot13algorithm(confirmPassword);
