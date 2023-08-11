@@ -16,7 +16,7 @@ struct member
     char pass_word[30];
 };
 
-void updateBookStatus(int id, int newStatus)
+void updateBookStatus_R(int id, int newStatus)
 {
     FILE *file = fopen("./data/books.csv", "r+");
     if (file == NULL)
@@ -51,17 +51,17 @@ void updateBookStatus(int id, int newStatus)
     rename("./data/temp.csv", "./data/books.csv");
 }
 
-void issueBook_here()
+void returnBook_here()
 {
     int book_id;
 
-    printf("Enter the book id that you want to issue from here\n:");
+    printf("Enter the book id that you want to return from here\n:");
     scanf("%d", &book_id);
-    updateBookStatus(book_id, 1);
+    updateBookStatus_R(book_id, 0);
 
-    printf("Book with ID %d has been marked as borrowed.\n", book_id);
+    printf("Book with ID %d has been marked as returned.\n", book_id);
 }
-void issueBook()
+void returnBook()
 {
     int flag = 0;
     struct member mem;
@@ -85,7 +85,7 @@ void issueBook()
         }
     }
     if (flag == 1)
-        issueBook_here();
+        returnBook_here();
 
     else
         printf("Sorry you're not registered yet:");
@@ -99,7 +99,7 @@ void issueBook()
     if (inputBook == 'Y' || inputBook == 'y')
     {
 
-        issueBook();
+        returnBook();
     }
     else
     {
