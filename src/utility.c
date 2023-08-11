@@ -1,8 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "authentication.h"
 #include "addBook.h"
 #include "displayBooks.h"
 #include "searchBooks.h"
+#include "searchMember.h"
+#include "displayMembers.h"
+#include "issueBook.h"
 
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -64,31 +68,48 @@ void prompt()
         scanf("%d", &input);
         printf("\n");
 
-        if (input == 99)
+        switch (input)
         {
-
+        case 99:
             printf(ANSI_COLOR_RED "LMS has been terminated. \n" ANSI_COLOR_RESET);
-            break;
-        }
-        if (input == 1)
-        {
+            return;
+
+        case 1:
+
             addBook();
             break;
-        }
-        if (input == 2)
-        {
+
+        case 2:
             addMember();
             break;
-        }
-        if (input == 5)
-        {
+
+        case 3:
+            issueBook();
+            break;
+
+        case 4:
+            break;
+
+        case 5:
             searchBooks();
             break;
-        }
-        if (input == 7)
-        {
+
+        case 6:
+            searchMember();
+            break;
+
+        case 7:
             displayBooks();
             break;
+
+        case 8:
+            displayMembers();
+            break;
+
+        default:
+            printf(ANSI_COLOR_RED "\nPlease enter corresponding values only. \n" ANSI_COLOR_RESET);
+
+            return;
         }
     }
 }
