@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include "utility.h"
 
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -18,7 +19,6 @@ void displayMembers()
     system("cls");
     printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
     printf("\n------------------Members------------------\n");
-    printf("\n Members' Username \n" ANSI_COLOR_RESET);
     char line[256];
     char members[100][256];
     int memberCount = 0;
@@ -42,4 +42,24 @@ void displayMembers()
 
     printf("\n");
     fclose(file);
+    printf("\nEnter [Y] to Continue OR [N] to go to Main Menu \n>");
+
+    char input;
+    getchar();
+    scanf("%c", &input);
+
+    if (input == 'Y' || input == 'y')
+    {
+
+        displayMembers();
+    }
+    else
+    {
+        system("cls");
+        printBanner();
+        menuBar();
+        prompt();
+    }
+
+    printf(ANSI_COLOR_RESET);
 }
