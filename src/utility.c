@@ -73,7 +73,7 @@ void prompt()
         {
         case 99:
             printf(ANSI_COLOR_RED "LMS has been terminated. \n" ANSI_COLOR_RESET);
-            return;
+            exit(0);
 
         case 1:
 
