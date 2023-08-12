@@ -30,6 +30,7 @@ void updateBookStatus_R(int id, int newStatus)
 
     while (fgets(line, sizeof(line), file))
     {
+
         int currentId, isborrow;
         char bookname[100], authorname[100], year[100];
 
@@ -37,6 +38,7 @@ void updateBookStatus_R(int id, int newStatus)
 
         if (currentId == id)
         {
+
             fprintf(tempFile, "%d,%s,%s,%s,%d\n", currentId, bookname, authorname, year, newStatus);
         }
         else
@@ -47,15 +49,17 @@ void updateBookStatus_R(int id, int newStatus)
 
     fclose(file);
     fclose(tempFile);
+
     remove("./data/books.csv");
     rename("./data/temp.csv", "./data/books.csv");
 }
 
 void returnBook_here()
 {
+
     int book_id;
 
-    printf("Enter the book id that you want to return from here\n:");
+    printf(ANSI_COLOR_GREEN "Enter the book id that you want to return from here\n>" ANSI_COLOR_RESET);
     scanf("%d", &book_id);
     updateBookStatus_R(book_id, 0);
 
@@ -63,6 +67,9 @@ void returnBook_here()
 }
 void returnBook()
 {
+    system("cls");
+    printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
+    printf("\n------------------Return Book------------------\n" ANSI_COLOR_RESET);
     int flag = 0;
     struct member mem;
     char usr[30], pass[30];
@@ -90,7 +97,7 @@ void returnBook()
     else
         printf("Sorry you're not registered yet:");
 
-    printf("\nEnter [Y] to Continue OR [N] to go to Main Menu \n>");
+    printf(ANSI_COLOR_GREEN "\nEnter [Y] to Continue OR [N] to go to Main Menu \n>" ANSI_COLOR_RESET);
 
     char inputBook;
     getchar();
