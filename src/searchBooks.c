@@ -52,7 +52,7 @@ void searchBooks()
 
     if (flag == 1)
     {
-        printf(ANSI_COLOR_BLUE "%d\t%s\t\t\t%s\t\t\t%d\t\t%s\n", book.id, book.title, book.author, book.year, book.isBorrow ? "Borrowed" : "Not Borrowed" ANSI_COLOR_RESET);
+        printf(ANSI_COLOR_BLUE "%d\t%s\t\t\t%s\t\t\t%d\t\t%s\n", book.id, book.title, book.author, book.year, borrowInt ? "Borrowed" : "Not Borrowed" ANSI_COLOR_RESET);
     }
     else
     {
