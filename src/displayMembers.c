@@ -10,15 +10,17 @@
 
 void displayMembers()
 {
+    system("cls");
+    printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
+    printf("\n------------------Display Members------------------\n");
+
     FILE *file = fopen("./data/members.csv", "r");
     if (file == NULL)
     {
         printf(ANSI_COLOR_RED "Error opening file.\n" ANSI_COLOR_RESET);
         return;
     }
-    system("cls");
-    printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
-    printf("\n------------------Members------------------\n");
+
     char line[256];
     char members[100][256];
     int memberCount = 0;
@@ -42,7 +44,7 @@ void displayMembers()
 
     printf("\n");
     fclose(file);
-    printf("\nEnter [Y] to Continue OR [N] to go to Main Menu \n>");
+    printf(ANSI_COLOR_GREEN "\nEnter [Y] to Continue OR [N] to go to Main Menu \n>" ANSI_COLOR_RESET);
 
     char input;
     getchar();

@@ -63,9 +63,13 @@ void issueBook_here()
 }
 void issueBook()
 {
+    system("cls");
+    printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
+    printf("\n------------------Issue Book------------------\n" ANSI_COLOR_RESET);
     int flag = 0;
     struct member mem;
     char usr[30], pass[30];
+
     printf(ANSI_COLOR_GREEN "Enter the username:" ANSI_COLOR_RESET);
     scanf("%s", usr);
     printf(ANSI_COLOR_GREEN "Enter the password:" ANSI_COLOR_RESET);
@@ -90,7 +94,7 @@ void issueBook()
     else
         printf("Sorry you're not registered yet:");
 
-    printf("\nEnter [Y] to Continue OR [N] to go to Main Menu \n>");
+    printf(ANSI_COLOR_GREEN "\nEnter [Y] to Continue OR [N] to go to Main Menu \n>" ANSI_COLOR_RESET);
 
     char inputBook;
     getchar();
