@@ -11,6 +11,10 @@
 
 void searchMember()
 {
+    system("cls");
+    printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
+    printf("\n------------------Search Member------------------\n" ANSI_COLOR_RESET);
+
     char key[50];
     int flag = 0;
     FILE *fp = NULL;

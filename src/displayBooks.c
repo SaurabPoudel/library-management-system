@@ -34,18 +34,23 @@ void charFiller(char info[], int spaces)
 
 void displayBooks()
 {
+    system("cls");
+    printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
+    printf("\n------------------Display Books------------------\n" ANSI_COLOR_RESET);
+
     FILE *file = fopen("./data/books.csv", "r");
     if (file == NULL)
     {
         printf(ANSI_COLOR_RED "Error opening file.\n" ANSI_COLOR_RESET);
         return;
     }
+    else
+    {
+        printf("\nID\tTitle\t\t\t\t\tAuthor\t\t\t\t\tYear\t\tBorrowed\n");
+    }
 
     struct Book book;
-    system("cls");
-    printf(ANSI_COLOR_GREEN "-----------Library Management System-----------\n");
-    printf("\n------------------Display Books------------------\n" ANSI_COLOR_RESET);
-    printf("\nID\tTitle\t\t\t\t\tAuthor\t\t\t\t\tYear\t\tBorrowed\n");
+
     printf(ANSI_COLOR_BLUE);
     unsigned int borrowInt;
     while (fscanf(file, "%d,%[^,],%[^,],%u,%u\n", &book.id, book.title, book.author, &book.year, &borrowInt) != EOF)
