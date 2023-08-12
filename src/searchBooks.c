@@ -35,7 +35,7 @@ void searchBooks()
         printf(ANSI_COLOR_RED "Error opening file.\n" ANSI_COLOR_RESET);
     }
 
-    printf(ANSI_COLOR_RED "Make sure to type [-] wherever there are spaces.\n>" ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_RED "Make sure to type [-] wherever there are spaces.\n" ANSI_COLOR_RESET);
     printf(ANSI_COLOR_GREEN "Enter the book TITLE: \n>" ANSI_COLOR_RESET);
     scanf("%s", key);
     getchar();
