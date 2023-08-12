@@ -18,37 +18,54 @@ struct member
 
 void updateBookStatus(int id, int newStatus)
 {
-    FILE *file = fopen("./data/books.csv", "r+");
+    FILE *file = fopen("./data/books.csv", "r");
     if (file == NULL)
     {
         printf("Error opening file.\n");
         return;
     }
 
-    char line[100];
     FILE *tempFile = fopen("./data/temp.csv", "w");
+    if (tempFile == NULL)
+    {
+        printf("Error creating temporary file.\n");
+        fclose(file);
+        return;
+    }
 
+    char line[100];
     while (fgets(line, sizeof(line), file))
     {
         int currentId, isborrow;
         char bookname[100], authorname[100], year[100];
 
-        sscanf(line, "%d,%[^,],%[^,],%[^,],%d", &currentId, bookname, authorname, year, &isborrow);
-
-        if (currentId == id)
+        if (sscanf(line, "%d,%[^,],%[^,],%[^,],%d", &currentId, bookname, authorname, year, &isborrow) == 5)
         {
-            fprintf(tempFile, "%d,%s,%s,%s,%d\n", currentId, bookname, authorname, year, newStatus);
-        }
-        else
-        {
-            fprintf(tempFile, "%d,%s,%s,%s,%d\n", currentId, bookname, authorname, year, isborrow);
+            if (currentId == id)
+            {
+                fprintf(tempFile, "%d,%s,%s,%s,%d\n", currentId, bookname, authorname, year, newStatus);
+            }
+            else
+            {
+                fprintf(tempFile, "%d,%s,%s,%s,%d\n", currentId, bookname, authorname, year, isborrow);
+            }
         }
     }
 
     fclose(file);
     fclose(tempFile);
-    remove("./data/books.csv");
-    rename("./data/temp.csv", "./data/books.csv");
+
+    if (remove("./data/books.csv") != 0)
+    {
+        printf("Error deleting original file.\n");
+        return;
+    }
+
+    if (rename("./data/temp.csv", "./data/books.csv") != 0)
+    {
+        printf("Error renaming temporary file.\n");
+        return;
+    }
 }
 
 void issueBook_here()
