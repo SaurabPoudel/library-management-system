@@ -2,6 +2,8 @@
 
 The Library Management System is a command-line application that allows managing books in a library. This project is developed in C and provides functionalities to add books, display book details, search for books, and manage borrowing and returning of books. To add features follow the CONTRIBUTION.md file.
 
+##Demo Video 
+https://youtu.be/JI70Cya-4tI
 ## Prerequisites
 
 - GCC compiler (MinGW for windows users and GCC for Linux users)
