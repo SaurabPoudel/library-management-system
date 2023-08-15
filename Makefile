@@ -32,8 +32,17 @@ $(DATA_DIR):
 clean:
 	rmdir /s /q $(OBJ_DIR)
 	rmdir /s /q $(BIN_DIR)
-cleandatafolder:
+clean-data-folder:
 	rmdir /s $(DATA_DIR)
+
+# if you are getting error " in issuing and returning the book  then use this command in windows
+
+change-permission-win:
+	icacls $(DATA_DIR) /grant Everyone:F /t
+
+change-permission:
+	chmod 777 $(DATA_DIR)
+
 #for linux user uncomment this
 #clean:
 #	rm -rf $(OBJ_DIR)
