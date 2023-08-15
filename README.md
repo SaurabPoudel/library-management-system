@@ -94,6 +94,42 @@ Windows User
 mingw32-make clean
 ```
 
+### Clean the data files
+
+1. Open a terminal or command prompt.
+2. Change the current working directory to the location where you have cloned the project.
+3. Run the following command to clean the data files:
+
+Linux User
+
+```
+make cleandatafolder
+```
+
+Windows User
+
+```
+mingw32-make clean-data-folder
+```
+
+### If you are error like "Error deleting original file"
+
+1. Open a terminal or command prompt.
+2. Change the current working directory to the location where you have cloned the project.
+
+Linux User
+
+```
+sudo make change-permission-linux
+```
+
+Windows User
+
+```
+mingw32-make change-permission-windows
+
+```
+
 ## About the Project
 
 ### Features
