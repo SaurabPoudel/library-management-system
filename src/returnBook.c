@@ -57,13 +57,13 @@ void updateBookStatus_R(int id, int newStatus)
 
     if (remove("./data/books.csv") != 0)
     {
-        printf("Error deleting original file.\n");
+        printf("Error deleting original file. Try changing permission of data using \'mingw32-make change-permission-win\' command\n");
         return;
     }
 
     if (rename("./data/temp.csv", "./data/books.csv") != 0)
     {
-        printf("Error renaming temporary file.\n");
+        printf("Error renaming temporary file. Try changing permission of data using \'mingw32-make change-permission-win\'\n");
         return;
     }
 }
