@@ -112,7 +112,7 @@ Windows User
 mingw32-make clean-data-folder
 ```
 
-### If you are error like "Error deleting original file"
+### If you are getting error like "Error deleting original file"
 
 1. Open a terminal or command prompt.
 2. Change the current working directory to the location where you have cloned the project.
@@ -120,13 +120,13 @@ mingw32-make clean-data-folder
 Linux User
 
 ```
-sudo make change-permission-linux
+sudo make change-permission
 ```
 
 Windows User
 
 ```
-mingw32-make change-permission-windows
+mingw32-make change-permission-win
 
 ```
 
